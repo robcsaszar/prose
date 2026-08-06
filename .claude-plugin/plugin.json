@@ -1,0 +1,21 @@
+{
+  "name": "robcsaszar-prose",
+  "version": "0.5.0",
+  "description": "Draft and review skill for prose that detects AI writing patterns and rewrites in an authentic, channel-appropriate voice.",
+  "author": {
+    "name": "Rob Csaszar",
+    "url": "https://nhg.design"
+  },
+  "repository": "https://github.com/robcsaszar/prose",
+  "license": "MIT",
+  "keywords": [
+    "writing",
+    "editing",
+    "ai-detection",
+    "humanize",
+    "voice",
+    "copywriting",
+    "content",
+    "claude-code"
+  ]
+}

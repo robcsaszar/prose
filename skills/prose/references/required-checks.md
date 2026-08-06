@@ -1,6 +1,6 @@
 # Required Checks
 
-For pieces up to ~150 words or three short paragraphs, run checks 1–5, 7, and 10.
+For pieces up to ~150 words or three short paragraphs, run checks 1–5, 7, 10, 11, and 12.
 For longer pieces, run all checks.
 
 These are tripwires, not goals. Do not output the audit unless asked.
@@ -25,4 +25,20 @@ These are tripwires, not goals. Do not output the audit unless asked.
 
 9. **Shape and spine.** For any piece longer than three paragraphs, state the organizing principle in five words or fewer and the controlling claim in one sentence. If the shape is basically "starting state → changes → verdict", if paragraphs map one-to-one with named milestones, or if each paragraph is just one labeled topic bucket, restructure.
 
-10. **Over-correction.** Did you add fake-human moves — typos, slang, forced asides, random fragments, or artificial sentence-length targets — just to break a pattern?
+10. **Over-correction.** Did you add fake-human moves — typos, slang, forced asides, random fragments, or artificial sentence-length targets — just to break a pattern? Then check the conventions you may have changed without being asked: spelling variety (en-GB vs en-US), date format, number format, and quotation-mark style. If the source held one of these consistently, it is a deliberate choice and it stays. Silently Americanising a British writer is an unrequested edit, not a fix. Where the source was inconsistent, pick the variety its audience expects and say which you picked.
+
+11. **Claim typing and invented norms.** Every substantive claim is one of four types — know which one you are writing: (a) *from the data* — present in the source or supplied by the user; state it plainly, no insurance; (b) *computed on an assumption* — true only if the assumption holds; name the assumption in the same breath; (c) *judgment* — your assessment; mark it as one and give the basis, or cut it; (d) *a gap* — needed for the conclusion but missing; name it once, without drama. Then scan for invented norms: no "healthy", "strong", "well within range", "realistic" without a named baseline (a plan, a prior period, a cost floor, an industry benchmark). If you catch yourself writing "as long as churn stays under 3%, the model holds", stop and ask where the number came from.
+
+12. **Verbatim integrity.** List every fixed string in the piece — code, commands, flags, file paths, identifiers, product names, error text, quoted material, legal phrasing, defined terms — and confirm each one is unchanged from the source. A rewrite that improves the prose around a command and edits the command has broken the document. If one had to change, say so in your response rather than leaving the reader to find it.
+
+13. **Hedge economy and punch budget.** Insure a fragile point once — "this looks like", "still a hypothesis" — at the exact claim it applies to; a qualifier after every sentence is its own AI pattern. Then the inverse: count the aphoristic paragraph-closing one-liners. More than one, demote the rest to plain statements. Confirm there is slack somewhere — at least one sentence that isn't trying to impress — and that confidence varies across the text. Every-sentence-lands and every-claim-equally-sure are both machine signatures.
+
+---
+
+**Deterministic pass (when a shell is available).** The mechanical layer is scriptable:
+
+```bash
+python3 scripts/slop-scan.py --channel <medium> draft.md
+```
+
+Debris hits get fixed unconditionally. Phrase and typography hits are places to look — verify each against the false-positive rules in `ai-patterns-universal.md` before rewriting; an active voice profile or medium convention may allow some (suppress those with `--allow <rule-id>`). No shell: scan `formula-watchlist.md` manually instead.

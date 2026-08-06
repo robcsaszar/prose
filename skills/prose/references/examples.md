@@ -35,3 +35,23 @@ Read when revising a paragraph that feels generic, puffy, vague, choppy, or over
 - **Vague claim → honest limitation.** Avoid: "Our comprehensive solution handles all use cases." Prefer: "This won't catch dynamic imports or string templates. You'll need to fix those manually — expect about 5% of files."
 
 - **Promotional opening → data-backed opening.** Avoid: "We're thrilled to announce a revolutionary approach to migrations." Prefer: "Codemods automate 70% of migrations. Here's how to get to 95%."
+
+---
+
+## Whole-Piece Moves
+
+Corrections that operate on the document, not the sentence. Read when a rewrite still feels machine-shaped after the line edits are done.
+
+- **Title-as-definition opener → plain definition.** Avoid: "Code review is the practice of systematically examining source code changes. In a world of increasingly complex software, it offers teams a practical way to improve quality, share knowledge, and catch defects." Prefer: "Code review means a second person reads the change before it ships. Most of its value has nothing to do with catching bugs." The first restates the title, adds a stock opener, and closes with a rule of three; the second starts where the thinking starts.
+
+- **Per-paragraph moral → deleted.** A paragraph that ends "This shift in attention can make problems feel more manageable" after three sentences that already showed it is explaining itself. Delete the last sentence of any paragraph that restates the paragraph. Do this across a whole piece and it typically shrinks 30–50% — that is the correct outcome of a free edit, not a loss.
+
+- **Invented statistic → named gap.** Avoid: "Studies show journaling improves focus by up to 25%." (No study in the source.) Prefer: "The claim that journaling improves focus is plausible and widely repeated; I don't have a study in front of me that measures the effect." An honest gap survives a fact-check; an invented number does not.
+
+- **Symmetric paragraph engine → varied shapes.** If six paragraphs each run claim → because → therefore, the piece has one paragraph stamped six times. Break the mold at least twice: open one paragraph on an example, let one run long, let one be two sentences. The order of information should follow the argument, not a template.
+
+- **List-recap ending → end where the substance ends.** Avoid: "In conclusion, journaling offers many benefits. It can reduce stress, improve focus, sharpen memory, and support better habits." The recap adds nothing a reader didn't just read. Cut the section; if the piece needs an ending, end on something new — a caveat, a next step, an open question — or simply stop after the last real point.
+
+- **All-agreement prose → one counterargument.** A piece where every paragraph agrees with itself reads like an ad, to people and to classifiers. If the subject has serious critics, give the strongest objection a sentence or two and answer it honestly — or concede it.
+
+A rewrite cannot fix an empty source. If the original contains no facts, the honest output is a shorter text plus a list of what's missing (a named study, a concrete example, a duration, a counterargument) — not a longer, more convincing imitation.

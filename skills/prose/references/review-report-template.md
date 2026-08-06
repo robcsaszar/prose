@@ -16,7 +16,10 @@ Use this structure for all review outputs.
 ...
 
 ### AI Pattern Flags
-[Every flagged phrase/structure with exact quote and suggestion]
+[CONFIRMED flags only — exact quote, location, and suggestion for each.
+Debris and scanner hits that survived verification are included here.]
+
+Dismissed as false positives: [count] ([one-line note if any dismissal is instructive])
 
 ### Originality / Clarity Flags
 [Every concern]

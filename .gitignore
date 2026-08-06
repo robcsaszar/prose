@@ -1,0 +1,5 @@
+__pycache__/
+*.py[cod]
+
+# Written by Voice Calibration from the user's own writing sample.
+skills/prose/references/voice-profile.md

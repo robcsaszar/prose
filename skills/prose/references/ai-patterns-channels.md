@@ -157,3 +157,86 @@ Run instead of originality check for emails:
 - No formal greeting or sign-off
 - Match the casual tone of the channel
 - If sharing a link: one sentence of context, not a summary
+
+---
+
+## Documentation
+
+Rewrite rules for this channel live in `channel-rules.md`. Structural regularity is not a tell here — see Part 6 of `ai-patterns-universal.md`.
+
+### Phrase-Level Markers
+
+**Difficulty minimisers:** "simply", "just", "easily", "all you need to do is". The word does no work for the reader who succeeds and insults the one who is stuck.
+
+**Before:** "Simply update the config and everything should just work."
+**After:** "Update `retention_days` in `config.yaml`, then restart the collector. The collector logs `config reloaded` when it picks up the change."
+
+Watch for: `simply`, `just`, `easily`, `straightforward`, `as expected`, `should just work`, `obviously`, `of course`
+
+**Hedging in a specification:** a procedure that says "should", "typically", or "in most cases" without naming the exception has moved the decision onto the reader.
+
+**Before:** "The job typically finishes within a few minutes."
+**After:** "The job finishes within five minutes. If it runs longer, the queue is backed up — check the depth with `qstat`."
+
+Watch for: `typically`, `generally`, `in most cases`, `should be fine`, `a few`, `some time`, `as needed`
+
+**Synonym cycling across a reference page:** the same object called a "token", then a "credential", then an "auth object" across three paragraphs. In prose this reads as varied; in documentation it reads as three different things.
+
+Watch for: any concept named two ways in one page — pick one and hold it
+
+**Noun stacks:** four or more nouns in a row asking the reader to infer the relationships that prepositions would have stated.
+
+**Before:** "Open the customer data retention policy update process."
+**After:** "Open the process for updating how long customer data is retained."
+
+Watch for: runs of four or more nouns with no preposition between them
+
+### Structural Markers
+
+**Steps that state the action but not the result.** A reader who cannot tell whether a step worked cannot tell where a failure started. Every step needs an observable outcome.
+
+**Before:** "3. Promote the new key."
+**After:** "3. Promote the new key with `authctl key promote <key-id>`. The service now signs all new tokens with it."
+
+**Narrative framing wrapped around a procedure.** An opening paragraph about why key rotation matters, a closing paragraph about security posture, and four steps in between. Documentation is read by someone mid-task; the essay goes elsewhere or gets cut.
+
+**Prerequisites discovered mid-procedure.** Step 4 mentions a permission the reader needed before step 1. Everything required goes in a "Before you start" section.
+
+**Undifferentiated warnings.** Notes, tips, cautions, and warnings all rendered the same weight, so the one that prevents data loss reads like the one about a keyboard shortcut.
+
+**Negative-only instructions.** "Do not run this on production" with no statement of where to run it. Say what to do, then what to avoid.
+
+---
+
+## Creative
+
+Rewrite rules for this channel live in `channel-rules.md`. The em-dash prohibition in `ai-patterns-universal.md` Part 3 is suspended inside dialogue and verse.
+
+### Phrase-Level Markers
+
+**The explained ending.** The last line tells the reader what the piece meant. This is the single strongest creative-writing tell — the model resolves what a writer would leave standing.
+
+**Before:** "She closed the door. Sometimes the hardest goodbyes are the ones we never say out loud."
+**After:** "She closed the door."
+
+Watch for: a final sentence that generalises the specific one before it; `and that was when she realised`; `sometimes`; `in the end`; `little did she know`
+
+**One register for every character.** Every voice has the same vocabulary, the same sentence length, and the same wit. Real dialogue is uneven: people interrupt, repeat, trail off, and answer the wrong question.
+
+Watch for: no character with a verbal tic; nobody speaking in fragments; every line grammatically complete
+
+**Stock scene openings:** weather, waking up, looking in a mirror, or a date and time stamp doing the work an image should do.
+
+Watch for: `The rain hammered`, `She awoke to`, `caught her reflection`, `It was a cold morning in`
+
+**Body-metaphor emotion:** handled in `ai-patterns-universal.md` Part 2. It appears at roughly twice the human rate and is the most common tell in fiction after the explained ending. Do not restate the rule here; apply it.
+
+### Structural Markers
+
+**Every scene resolves.** Each section closes its own loop and lands on a beat. Fiction leaves things open, drops threads, and lets a scene end mid-motion.
+
+**Symmetry between characters.** Two characters, two objections, two reversals, matched in length. Real scenes are lopsided — one person has far more at stake.
+
+**Sensory detail distributed evenly.** One sight, one sound, one smell per scene, on schedule. Attention is not evenly distributed; a frightened character notices almost nothing except one wrong detail.
+
+**No dead time.** Every line advances plot or reveals character, with no slack anywhere. Prose that never rests reads as generated regardless of how good each sentence is.

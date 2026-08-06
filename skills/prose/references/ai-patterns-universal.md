@@ -2,6 +2,8 @@
 
 Apply to ALL content types regardless of channel. Flag every instance with exact quote and location.
 
+**Structure outweighs vocabulary.** A 2026 study of 61,608 human- and model-written texts (University of Maryland / Google DeepMind, arXiv:2604.03136) found that surface-editing AI text — removing clichés and purple prose — barely moved a classifier reading only structural features: detection dropped from 95.5% to 93.9%. The durable signal is construction, not diction: the moral stated at the end of every paragraph, the single-track claim-support-takeaway shape, the tidy endings. Word-level tells also expire on their own ("delve" peaked in 2023–2024 and collapsed in 2025; newer models suppress em dashes), while structural habits persist across model generations. Fixing Part 1 without fixing Parts 2 and 5 produces text that still reads as AI.
+
 ---
 
 ## Part 1: Phrase-Level Markers
@@ -21,6 +23,8 @@ Flag when used as fallback diction (not when they are plainly the right word):
 `unlock`, `unveil`, `utilize`, `valuable`, `various` (vague pluralizer), `vibrant`, `whilst`
 
 The problem is repeated fallback diction, not the existence of any one word.
+
+Shelf-life warning: this list decays. Each model generation retires the previous tells ("delve" is GPT-4-era; "align with", "enhance", "fostering" are GPT-4o-era; "emphasizing", "highlighting", "showcasing" persist into later generations). Treat individual words as hints and the underlying habits — inflation, hedging-by-template, copula avoidance — as the actual target. A synonym of a listed word is not itself suspect; the list is literal.
 
 ### Hollow intensifiers
 
@@ -45,7 +49,7 @@ Watch for: a list of outlets or credentials with no context for any single one, 
 **Before:** "Gallery 825 serves as LAAA's exhibition space for contemporary art. The gallery features four separate spaces and boasts over 3,000 square feet."
 **After:** "Gallery 825 is LAAA's exhibition space for contemporary art. The gallery has four rooms totaling 3,000 square feet."
 
-Watch for: `serves as` / `stands as` / `marks` / `represents [a]` / `boasts` / `features` / `offers [a]` substituted for a plain `is`, `are`, or `has`. The elaborate construction rarely adds information.
+Watch for: `serves as` / `stands as` / `marks` / `represents [a]` / `boasts` / `features` / `offers [a]` substituted for a plain `is`, `are`, or `has`. Also `refers to` in a lead definition ("X refers to the practice of...") — a definition should read "X is...". The elaborate construction rarely adds information.
 
 ### Vague attributions and weasel words
 
@@ -53,6 +57,15 @@ Watch for: `serves as` / `stands as` / `marks` / `represents [a]` / `boasts` / `
 **After:** "It supports several endemic fish species, according to a 2019 survey by the Chinese Academy of Sciences."
 
 Watch for: `industry reports`, `observers have cited`, `experts argue`, `some critics argue`, `several sources suggest`, `research shows` (without naming the research), `many believe`
+
+### Overgeneralized sourcing
+
+Inflating the count: one review becomes "reviewers note"; two articles become "widespread coverage"; a short list of examples gets an implied "and many more" the sources never supported.
+
+**Before:** "Reviewers praised the interface, and the launch received extensive media coverage."
+**After:** "One reviewer (TechRadar, March 2025) praised the interface; two trade outlets covered the launch."
+
+Keep the count honest: "one reviewer", "two trade articles", the actual names. `such as` implying a longer list, `multiple outlets` with one citation, and trivial mentions inflated into `has been featured in` all count.
 
 ### AI phrasing and metaphors
 
@@ -148,6 +161,23 @@ Fix for both: pick one change and trace its consequence. Cross-wire the piece.
 
 If nearly all paragraphs land at the same length, the writing looks pre-computed. Vary one.
 
+### Emotion rendered as body metaphor
+
+AI renders feeling through stock physical sensation at roughly twice the human rate (81% vs 38% of texts in the 2026 UMD/DeepMind corpus): "a tightening in the chest", "the team felt the blow", "her stomach dropped". Human writing more often names the event and its cost.
+
+**Before:** "The layoff announcement hit the team like a punch to the gut."
+**After:** "Three of the eight engineers handed in notice within the week of the announcement."
+
+Not a ban on physical description — flag it when the body metaphor is generic and stands in for a nameable fact or consequence.
+
+### Stating the moral (pre-digested conclusions)
+
+Ending the story with its lesson, the paragraph with its meaning, the section with its recap — AI does this in 77% of texts vs 52% for humans. If the point has been shown, it does not need to be named. Delete the paragraph's last sentence and check: the text almost always got better.
+
+### The outline test
+
+Read the first sentence of every paragraph in order. If they form a clean standalone summary of the piece, the document-level structure is machine-shaped: one neat claim per paragraph, orderly elaboration under each. Reorder, merge, or start one section somewhere unexpected — mid-thought, on a detail, on an objection. (Exempt: specs, runbooks, executive summaries, and other formats where an outline is the point.)
+
 ### Regularity patterns
 
 Watch for:
@@ -216,6 +246,8 @@ Replace with, in order of preference:
 **After:** "The term is primarily promoted by Dutch institutions, not by the people themselves, and it appears even in official documents."
 
 Scan the final output for `—` and `–`. Any hit means the draft is not done.
+
+**Creative channel exception.** In fiction, scripts, and poetry, the dash marks interrupted speech and broken thought, and no other punctuation does that job: `"I told you—" she stopped.` A period ends the line, a comma joins it, and both lose the interruption. Keep dashes inside dialogue and in verse where the break is the effect. Outside dialogue, in the narration itself, the rule holds.
 
 ### Overuse of boldface
 
@@ -333,7 +365,7 @@ A fake-candid hook manufacturing intimacy before an ordinary point. The tell is 
 **Before:** "Is it worth the price? Honestly? It depends on how often you'll use it."
 **After:** "Whether it's worth the price depends on how often you'll use it."
 
-Watch for: `Honestly?`, `Look,`, `Here's the thing`, `The thing is`, `Let's be honest`, `Real talk` used as standalone hooks. Not a tell when these appear mid-sentence in ordinary casual writing — see Part 5.
+Watch for: `Honestly?`, `Look,`, `Here's the thing`, `The thing is`, `Let's be honest`, `Real talk` used as standalone hooks. Not a tell when these appear mid-sentence in ordinary casual writing — see Part 6.
 
 ### Signposting and announcements
 
@@ -368,7 +400,53 @@ A heading followed by a one-line paragraph that simply restates the heading befo
 
 ---
 
-## Part 5: What NOT to Flag (False Positives)
+## Part 5: Second-Order Tells — "Clean Slop" (Model House Style)
+
+What edited AI looks like after a cleanup pass: the Part 1 vocabulary is gone, yet every sentence is load-bearing, every paragraph sticks the landing, and nothing ever relaxes. No human sustains that. Each move below is fine on its own; stacked through a whole text, they form a second, subtler uniform. Check for these AFTER the Part 1–4 patterns are fixed — they are what the fixes tend to produce.
+
+### Uniform confidence
+
+No sentence in the whole text is unsure of itself. Human confidence is uneven because knowledge is: hedges sit on the actual soft spots ("probably", "I think", "we'll see"), and plain flat statements sit where the writer is sure. AI hedging is either absent or smeared over everything as insurance. Flag a text where every claim lands with identical certainty.
+
+### Uniform maximum punch (no slack)
+
+Every sentence squeezed for effect, every paragraph closing on a beat. A person's attention is uneven and honest prose shows it: one or two sentences per text are allowed to be ordinary — an aside that trails off, a flat statement, a "we'll see". Slack is not a staged typo or an inserted "um"; those are props. It is letting an ordinary sentence be ordinary.
+
+### Aphorism budget exceeded
+
+One punchy one-liner closing a paragraph is an accent. An aphoristic close on paragraph after paragraph is a metronome. Budget: at most one per text; demote the rest to plain statements.
+
+### Upgraded negative parallelism
+
+"That's not X. That's Y." — the negative parallelism from Part 1, rebuilt as two clipped sentences to survive the cleanup. Same fix: say what Y is and never mention X.
+
+### Balanced antitheses replacing banned triads
+
+"Readers discount the cliché; they believe the invented fact" is fine once. Three of these see-saw constructions per text is the rule of three wearing a new coat.
+
+### Clipped fragment pairs for drama
+
+"Merged. One motion." "One team, one pulse." Two-beat fragments standing in for the stacked-fragment cadence flagged in Part 2.
+
+### Verdict verbs
+
+Studies "quietly kill", findings "demolish", data "buries" a claim. Dramatization compressed into a single verb. Calmer: "contradicts", "weakens", "suggests otherwise".
+
+### Recycled hooks
+
+`The real question is`, `Here's what that means in practice`, `Here's the thing`, `The part that got me:` — replacement phrases that became tells themselves.
+
+### Replacement tics
+
+Any substitute phrase repeated across three texts becomes a marker in its own right, whatever the phrase is. A worn phrase is rarely fixed by a fresher phrase — most of the time the right replacement is nothing: delete the framing and lead with the substance. When a review finds one, add it to this section or the formula watchlist, and add a scanner rule if it is mechanical.
+
+### Document-level template
+
+Hook, numbered evidence, a turn ("So I built..."), one qualifier, closing question — the whole piece poured into a product-announcement mold regardless of content. Catch it with the outline test (Part 2). Break it by starting one section in the middle of a thought.
+
+---
+
+## Part 6: What NOT to Flag (False Positives)
 
 A clean human writer can hit several patterns above without any AI involvement. Do not rewrite legitimate prose. The following are NOT reliable indicators on their own:
 
@@ -385,12 +463,15 @@ A clean human writer can hit several patterns above without any AI involvement. 
 - **"Honestly" or "look" mid-sentence** — ordinary in casual writing; the tell is the standalone theatrical opener (see Conversational rhetorical openers in Part 4), not the word itself
 - **Correct, complex formatting** — visual editors and templates produce clean output without any AI involvement
 - **Secondhand text** — do not rewrite watched phrases inside quotations, titles, proper names, or examples where the phrase is being discussed rather than used
+- **Fixed strings** — code, commands, flags, identifiers, file paths, product names, error messages, legal phrasing, and defined terms are not prose. A watched word inside one of them is part of the string, and changing it breaks the thing it names
+- **Craft in the creative channel** — fragments, repetition, intentional ambiguity, and a character who talks in stock phrases are all deliberate in fiction, scripts, and poetry. Judge them against the effect they produce, not against a pattern list. Dialogue in particular is allowed to sound like a person with verbal tics, because people have them
+- **The uniform shape of a procedure** — matching paragraph lengths, steady sentence rhythm, and unvarying confidence are what make a runbook followable. In documentation these are the target, not the tell
 
 When in doubt, look for clusters of tells, not isolated ones. A single em dash means nothing; an em dash plus rule-of-three plus `vibrant tapestry` plus a "Challenges and Future Prospects" section is a confession.
 
 ---
 
-## Part 6: Signs of Human Writing (Preserve These)
+## Part 7: Signs of Human Writing (Preserve These)
 
 When you see these, lean toward leaving the prose alone. They are evidence of a real person writing, and over-editing will destroy what makes the piece sound human.
 
@@ -399,4 +480,9 @@ When you see these, lean toward leaving the prose alone. They are evidence of a 
 - **Dated, era-bound references** — slang, memes, or in-jokes that map to a specific year and subculture.
 - **First-person editorial choices the writer can defend** — if the writer can explain why they made a particular cut or word choice, that's a strong human signal.
 - **Variety in sentence length** — real writing alternates short and long; AI writing tends toward an even, mid-length cadence.
-- **Genuine asides, parentheticals, or self-corrections** — "(I keep wanting to say 'almost' here, but it really was certain.)" Models rarely interrupt themselves like this.
+- **Genuine asides, parentheticals, or self-corrections** — "(I keep wanting to say 'almost' here, but it really was certain.)" Models rarely interrupt themselves like this. A correction left visible mid-paragraph ("Or rather, we had the idea but didn't see what it meant") is honest and human — once per text, where a real correction happened.
+- **Plain copulas and plain verbs** — "is", "has", "wrote", "moved", "used", "tried", "died". AI dodges these for elevated substitutes; humans use them freely. Never "fix" a plain verb into a fancier one.
+- **Superlatives and intensifiers when true** — "the first", "the only", "one of the best", "very", "perhaps", "tends to". These read as honest when they are; do not sand them off as hype without checking whether they're simply accurate.
+- **Hedges sitting on real soft spots** — "probably", "I think", "still a hypothesis" attached to the exact claim that is uncertain. Uneven confidence is a human signal (see Part 5, Uniform confidence); do not flatten it.
+- **Direct address of the reader** — human writing treats the audience as present ("you") at four times the AI rate in posts, essays, and docs. Where the genre allows it, "you" is normal; do not depersonalize it away.
+- **Slack sentences** — "We'll see." "Or not, I don't know." One or two ordinary, unforced sentences are what thinking sounds like on the page, not filler to cut.

@@ -14,6 +14,21 @@ Thanks for considering a contribution to `prose`. This is a small, single-skill 
 2. Keep edits inside `skills/prose/`. Reference files are split by concern (universal patterns, channel-specific patterns, channel rules, drafting core, and so on); add a new pattern to the file that already owns that concern rather than starting a new one.
 3. Note that this skill's own content legitimately uses heavy em-dash and AI-pattern examples as its subject matter. Don't "clean up" prose inside `SKILL.md` or `references/` to remove those. They're the material the skill is built to detect.
 
+## Tests
+
+Changes to `scripts/slop-scan.py` need the suite to pass. From `skills/prose/`:
+
+```bash
+python3 tests/run-tests.py          # run every case
+python3 tests/run-tests.py --update # rewrite goldens after an intended change
+```
+
+Ten golden-file cases, standard library only. Each case in `tests/cases.json` carries an `asserts` field explaining what it protects; a failing case prints it.
+
+Most cases assert silence. `tests/fixtures/clean-blog.md` is ordinary human prose and `tests/fixtures/noun-stack.md` pairs three real noun stacks with six sentences that must not fire. **If a rule change makes those fail, the rule is wrong — don't run `--update` to make the failure go away.** Over-flagging is the expensive failure for a tool whose job is to leave good writing alone.
+
+A new detection rule needs a fixture demonstrating it, and a check that the existing clean fixtures still pass.
+
 ## Questions
 
 Open an issue. There's no separate chat or forum for this project.

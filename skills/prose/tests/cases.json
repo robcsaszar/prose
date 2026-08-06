@@ -1,0 +1,63 @@
+[
+  {
+    "id": "clean-blog",
+    "fixture": "clean-blog.md",
+    "channel": "blog",
+    "asserts": "Human prose stays silent. This is the false-positive guard: if a change to the rule tables makes this case fail, the change is wrong."
+  },
+  {
+    "id": "slop-blog",
+    "fixture": "slop-blog.md",
+    "channel": "blog",
+    "asserts": "Every phrase family fires: inflation, promo, parallelism, disclaimer, connective, vocab, copula, attribution, hook, summary, merism."
+  },
+  {
+    "id": "debris",
+    "fixture": "debris.md",
+    "channel": "blog",
+    "asserts": "Chat artifacts, cutoff self-reference, tracking parameters, and placeholders all report as DEBRIS and force exit 2."
+  },
+  {
+    "id": "debris-not-suppressible",
+    "fixture": "debris.md",
+    "channel": "blog",
+    "allow": ["chat-closer", "chat-opener", "cutoff", "citation-debris", "placeholder"],
+    "asserts": "--allow cannot silence DEBRIS. Output and exit code match the un-allowed run exactly."
+  },
+  {
+    "id": "docs-procedure",
+    "fixture": "docs-procedure.md",
+    "channel": "docs",
+    "asserts": "A well-formed procedure is clean under docs. Uniform paragraphs and steady sentence length are correct here and must not be reported."
+  },
+  {
+    "id": "docs-procedure-as-blog",
+    "fixture": "docs-procedure.md",
+    "channel": "blog",
+    "asserts": "The same file under blog reports the structure notes that docs suppresses. Proves CHANNEL_SUPPRESS is doing the work rather than the rules being dead."
+  },
+  {
+    "id": "creative-scene",
+    "fixture": "creative-scene.md",
+    "channel": "creative",
+    "asserts": "Dialogue with interrupting em dashes is clean under creative."
+  },
+  {
+    "id": "creative-scene-as-blog",
+    "fixture": "creative-scene.md",
+    "channel": "blog",
+    "asserts": "The same scene under blog flags the em dashes. Same proof in the other direction."
+  },
+  {
+    "id": "nominalization",
+    "fixture": "nominalization.md",
+    "channel": "docs",
+    "asserts": "Each nominalization and wordiness pattern fires once, on its own line."
+  },
+  {
+    "id": "noun-stack",
+    "fixture": "noun-stack.md",
+    "channel": "docs",
+    "asserts": "The three real stacks fire. The six ordinary sentences below them, including the verb phrases that earlier versions of the rule misread as stacks, stay silent."
+  }
+]

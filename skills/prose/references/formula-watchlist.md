@@ -38,6 +38,17 @@ Not bans. Quick places to scan when default LLM writing slips into formula. Do n
 - Decorative emoji and checkmark bullets in prose contexts
 - Generic-to-the-platform replies that reference nothing specific to the actual conversation
 
+## Second-order replacement phrases (post-cleanup tells)
+
+Phrases that show up as substitutes after the first round of AI patterns is edited out — see `ai-patterns-universal.md` Part 5:
+
+- `That's not X. That's Y.`
+- `The real question is`
+- `Here's what that means in practice`
+- `The part that got me:`
+- Verdict verbs on studies and events: `quietly kills`, `demolishes`, `buries`
+- Any substitute phrase you notice recurring across three texts — it has become a marker itself; delete the framing and lead with the substance instead of coining a replacement
+
 ## Jargon defaults
 
 Use only when they are plainly the right words, not because the model fell into them:

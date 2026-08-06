@@ -24,9 +24,15 @@ Copy the `skills/prose/` directory into your project's `.claude/skills/`.
 
 ## What it does
 
-The skill runs in two modes, detected from context. Draft mode takes a topic, brief, or outline and produces new content, first asking what the reader needs to do or feel, what would surprise them, and what concrete example can carry the piece, then drafting and running required checks. Review mode takes existing text, auto-detects its channel (blog, social media, email, or IM), scans it against a library of universal and channel-specific AI writing markers, scores it, and produces a rewrite that keeps every original idea while replacing flagged phrasing, varying sentence rhythm, and restoring a human voice.
+The skill runs in two modes, detected from context. Draft mode takes a topic, brief, or outline and produces new content, first asking what the reader needs to do or feel, what would surprise them, and what concrete example can carry the piece, then drafting and running required checks. Review mode takes existing text, auto-detects its channel (blog, social media, email, IM, documentation, or creative), scans it against a library of universal and channel-specific AI writing markers, scores it, and produces a rewrite that keeps every original idea while replacing flagged phrasing and restoring a human voice.
+
+Channels are not cosmetic. A runbook is scored on whether a reader can complete the task, not on whether it sounds like a specific person, and the structural uniformity that would be a tell in a blog post is the target in a procedure. Fiction and poetry keep the em dashes that mark interrupted speech. Applying blog rules to either is the failure the channel split exists to prevent.
 
 It supports voice calibration from a writing sample so drafts and rewrites can match a specific person's sentence rhythm, word choice, and structural habits, and it updates its own pattern library with novel AI-writing markers found during review.
+
+Anti-slop enforcement runs on three mechanisms rather than vibes. A deterministic scanner (`scripts/slop-scan.py`) catches mechanical tells — chat debris, formula phrases, typography artifacts, structural monotony metrics — with stable, repeatable output, and runs on both new drafts and reviewed text. Every flag then faces adversarial verification: the skill argues each one is a false positive before it may enter the report, so legitimate prose is protected from over-editing. Rewrites go through an elimination loop — rewrite, re-scan, then prosecute the result as if it were still AI-generated — until the text survives both the script and the argument, including the second-order tells that surface-level cleanups leave behind (uniform confidence, an aphoristic close on every paragraph, template document shapes). Voice calibration can persist to a profile file that future sessions reuse, and the profile feeds the scanner's allowlist so personal style is never flagged as slop.
+
+The scanner's rules are covered by a golden-file test suite (`python3 tests/run-tests.py`, no dependencies). Most of its cases assert silence rather than detection: a clean-prose fixture fails the suite if a rule change starts flagging ordinary writing, which is the failure mode that matters for a tool whose job is to leave good text alone.
 
 ## License
 [MIT](LICENSE) © Rob Csaszar

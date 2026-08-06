@@ -6,7 +6,7 @@ Use only when required checks are not enough for a longer piece — usually when
 
 - **Paragraph spread.** Count sentences in each paragraph. If nearly all land at the same count, vary one.
 
-- **Sentence spread.** Compare the shortest and longest sentences. If everything sits in the same medium band, vary one.
+- **Sentence spread.** Compare the shortest and longest sentences. If everything sits in the same medium band, vary one. Operational check: take any five consecutive sentences; if their lengths cluster within a narrow band, the rhythm is machine-regular. In good plain prose a 40-word sentence can sit next to a 2-word one, and a few sentences per page run under six words.
 
 - **Sentence architecture audit.** Look at sentence types, not only length. If most sentences are simple declaratives, combine one pair of close thoughts with coordination or subordination. If every sentence starts fresh instead of carrying reference forward, revise one sentence so it begins from the previous thought and ends with the new one.
 
@@ -25,3 +25,13 @@ Use only when required checks are not enough for a longer piece — usually when
 - **Catalog audit.** If one paragraph names three or more terms, features, or labels from the same milestone, or jumps through multiple milestones in short order, rewrite around one consequence instead.
 
 - **Bucket audit.** If you can label each paragraph with a clean category heading and those labels barely overlap, the piece is too modular. Cross-wire at least one paragraph.
+
+- **Outline test.** Read the first sentence of every paragraph in order. If they form a clean standalone summary, the document structure is machine-shaped. Reorder, merge, or start one section mid-thought. (Exempt: specs, runbooks, and formats where an outline is the point.)
+
+- **Confidence spread.** Mark the most and least certain claims. If every sentence carries identical confidence, the text is machine-flat: put hedges on the actual soft spots ("probably", "I think", "still a hypothesis") and let plain statements stand where the evidence is firm. Confidence should be uneven because knowledge is.
+
+- **Analogy audit.** One physical, everyday analogy per point, maximum, and it must do real explanatory work. Never two analogies for one idea, and never explain one abstraction with another ("a framework operating as a paradigm").
+
+- **Question audit.** Every question in the piece should be load-bearing: answered or explicitly deferred. A decorative rhetorical question that the next sentence immediately answers ("So what does this mean? It means...") gets cut.
+
+- **Read-aloud pass.** Reread the finished text the way its reader will, and listen. Any sentence you stumble on gets rewritten — and while rewriting, check whether the stumble was hiding a thinking error underneath. It often is.

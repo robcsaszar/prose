@@ -29,7 +29,27 @@
 | **Clarity** | Is the point or ask immediately clear? | 8–10 |
 | **Brevity** | Is it the right length for an IM? | 8–10 |
 
-**Important:** If AI-Likeness is low but Domain Credibility (blog/social media) or Clarity (email/IM) is also low, call this out explicitly. Content can be clean but hollow.
+### Documentation
+
+Documentation is not scored on Authenticity. Nobody needs a runbook to sound like a specific human; they need it to be right and followable.
+
+| Dimension | What it measures | Target |
+|-----------|-----------------|--------|
+| **AI-Likeness** | How much AI texture the text has (lower is better) | 1–3 |
+| **Task Completion** | Can a reader do the thing without guessing or leaving the page? | 8–10 |
+| **Precision** | Are the terms, values, commands, and conditions exact? | 9–10 |
+| **Consistency** | Is the same thing called the same name throughout? | 8–10 |
+
+### Creative
+
+| Dimension | What it measures | Target |
+|-----------|-----------------|--------|
+| **AI-Likeness** | How much AI texture the piece has (lower is better) | 1–3 |
+| **Voice** | Do the narration and each character sound like themselves? | 8–10 |
+| **Concrete Specificity** | Is it built from particular detail rather than category summary? | 7–10 |
+| **Restraint** | Does it trust the reader, or does it state its own moral? | 7–10 |
+
+**Important:** If AI-Likeness is low but Domain Credibility (blog/social media), Clarity (email/IM), Task Completion (documentation), or Restraint (creative) is also low, call this out explicitly. Content can be clean but hollow.
 
 ---
 
@@ -73,3 +93,25 @@
 - No formal greeting or sign-off
 - Match the casual tone of the channel
 - If sharing a link: one sentence of context, not a paragraph summary
+
+### Documentation
+
+- One action or statement per sentence; split any sentence carrying two
+- Write each step as condition, action, and expected result, so the reader can tell whether the step worked
+- Give positive instructions: say what to do, not only what to avoid
+- Use the same term for the same thing every time; never vary a term to avoid repetition
+- Keep noun groups short and use prepositions to show the relationship: "the policy for updating retained customer data", not "the customer data retention policy update process"
+- Name the actor when the actor matters — "the service rejects the token", not "the token is rejected"
+- Define a technical term on first use, or link to its definition; do not replace it with a vaguer everyday word
+- Preserve code, commands, flags, identifiers, product names, legal text, and quotations exactly
+- Do not remove headings, numbered steps, or lists for style reasons; structure is what makes a procedure usable
+- Uniform paragraph shape and steady sentence length are correct here — do not vary them to break regularity
+
+### Creative
+
+- The em-dash rule is suspended inside dialogue and verse; keep the dash where the interruption is the point
+- Preserve intentional ambiguity, cadence, fragments, and each character's register
+- Do not resolve tension the piece deliberately leaves open
+- Cut the closing line that explains what the piece meant; that is the strongest creative-writing AI tell
+- Remove only language that is inherited, inflated, evasive, or lazy — not language that is strange on purpose
+- Do not add a moral, a summary, or a thesis the draft did not have

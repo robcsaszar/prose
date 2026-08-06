@@ -43,10 +43,12 @@ Choose format and register to match the channel, not a global preference.
 **Email between colleagues:**
 - Prose first; lists are fine for discrete items, decisions, or action points
 
-**Documents / specs / reports / technical writing:**
+**Documents / specs / reports / technical writing** (the Documentation channel):
 - Structure is expected: headings, bullets, and sequence when they help scanning and precision
+- One action per sentence; steps state their expected result
+- Uniform paragraph shape and steady sentence length are correct here — see `channel-rules.md → Documentation`
 
-**Web pages / help centers / UI text / public docs:**
+**Web pages / help centers / UI text / public docs** (the Documentation channel):
 - Answer or next action goes early
 - Preserve scannability and accessibility: descriptive headings, lists for steps, descriptive link text
 - Do not flatten useful structure to avoid looking templated
@@ -55,9 +57,17 @@ Choose format and register to match the channel, not a global preference.
 - Structure on purpose; pick an angle
 - Do not let dates, named milestones, or neat category buckets become the spine unless the user asked for that
 
+**Fiction / poetry / memoir / scripts / lyrical prose** (the Creative channel):
+- Form is the user's call; do not impose article structure on a scene or a poem
+- The em-dash rule is suspended inside dialogue and verse
+- Intentional ambiguity, fragments, repetition, and uneven cadence are craft — see `channel-rules.md → Creative`
+- Everything else still applies: no invented facts, no inherited phrasing, no closing line that explains the piece
+
 ---
 
 ## Core Rules
+
+Rules 5, 14, and 17 restate points Orwell made in "Politics and the English Language" (1946): prefer the short word, cut the word that does no work, prefer the active verb, and prefer the everyday equivalent to the jargon term. He closed his own list by saying to break any of the rules sooner than write something outright barbarous, which is the same instruction as rule 10 in `required-checks.md` — a rule followed past the point of sense produces its own kind of bad writing.
 
 ### 1. Anchor to the actual context before drafting
 
@@ -91,8 +101,9 @@ Prefer fewer verified facts over many guessed ones. Do not use specificity theat
 - Invented milestone names or synthetic quotes
 - Suspiciously exact claims that cannot be sourced
 - Hidden-mechanism claims (internal logic, unseen motives, back-end behavior) presented as fact
+- Invented norms and thresholds: no "healthy", "strong", "well within range", "realistic" without a named baseline (plan, prior period, cost, industry reference)
 
-If you cannot verify a claim, attribute it, soften it, or cut it.
+If you cannot verify a claim, attribute it, soften it, or cut it. An invented specific does more damage than a cliché: readers discount the cliché as filler, but they believe the invented fact.
 
 ### 5. Use plain words; allow ordinary repetition; prefer verbs
 
@@ -105,6 +116,31 @@ Prefer:
 - "applying the rule" → not "the application of the rule"
 
 Prefer actions happening to people over abstractions being observed by systems.
+
+Two habits bury the verb. Both cost words and hide who did what.
+
+**Nominalization** — the action becomes a noun and the verb goes empty:
+
+❌ "The team will perform an analysis of the logs."
+✅ "The team will analyze the logs."
+
+❌ "The board made a determination about the cause."
+✅ "The board decided the cause."
+
+❌ "This section provides an explanation of the escalation path."
+✅ "This section explains how to escalate."
+
+**Noun stacks** — four or more nouns in a row, with the relationships between them left for the reader to guess:
+
+❌ "the customer data retention policy update process"
+✅ "the process for updating how long we keep customer data"
+
+❌ "the database connection pool timeout setting"
+✅ "the timeout setting for the database connection pool"
+
+Two or three nouns together are usually fine and often the real name of the thing. At four, put the prepositions back.
+
+When a piece needs a term, define it flat and immediately: one plain sentence with "is" or "means", edges included ("A soft launch means shipping to a small group before announcing anything — it does not mean the feature is unfinished"). No "refers to", no italicized mystique, no definition deferred to paragraph three.
 
 ### 6. Cohere through reference and sentence shape
 
@@ -130,6 +166,8 @@ Start where the answer starts. Stop where the answer stops.
 ### 8. Calibrate confidence, stance, and voice to genre
 
 Be confident where evidence is strong. Be explicit where it is weak or interpretive.
+
+Hedge economy: insure a fragile point once — "this looks like", "still a hypothesis" — at the exact claim it applies to, usually near the end. A qualifier after every sentence is its own AI pattern; so is uniform confidence with no hedge anywhere. Confidence should be uneven across the text, because knowledge is.
 
 - If the genre normally carries a visible writer (review, opinion, comment), let the writer appear
 - If the genre normally aims at neutrality (summary, docs, news), do not inject attitude or first person
@@ -196,7 +234,33 @@ Re-read as a first-time reader. Cut:
 - Sentences whose only job is to announce the next sentence
 - Paragraphs that restate each other
 
-Replace the most generic clause with something specific, or delete it. Most edits should make the text shorter — but do not confuse concision with chopping. Combining two tightly related sentences is sometimes the cleaner edit.
+Replace the most generic clause with something specific, or delete it. Most edits should make the text shorter — but do not confuse concision with chopping. Combining two tightly related sentences is sometimes the cleaner edit. Do not keep a passage because it cost effort.
+
+### 15. Leave slack; budget the punch
+
+Do not squeeze every sentence for maximum effect. One or two sentences per text are allowed to be ordinary: an aside that trails off, a flat statement, a plain "we'll see". A person's attention is uneven and honest prose shows it; a text where every line is polished to the same shine reads as manufactured. Slack is not a staged typo or inserted filler — those are props, and they read as props.
+
+Aphorism budget: at most one punchy one-liner closing a paragraph per text. If every paragraph lands with a beat, ease a few back into plain statements.
+
+### 16. Render emotion as event and cost
+
+Prefer the fact and its consequences over stock body metaphors. Not "the news hit the team hard" but "three people quit within the week". Physical description is fine when it is specific and real; generic sensation standing in for a nameable consequence is a tell.
+
+### 17. Use the same term for the same thing
+
+In technical, instructional, and reference writing, name a thing once and keep that name. Do not reach for a synonym to avoid repeating yourself: a reader who meets "token", then "credential", then "auth object" has to work out whether those are three things or one, and the answer is not on the page.
+
+This is the positive form of the elegant-variation pattern flagged in review. Rule 5 already permits ordinary repetition; here it is mandatory. Where a term genuinely has two names in the field, say so once and then pick one.
+
+Ordinary prose is looser. In an essay or a post, varying a word for rhythm is fine as long as the referent never becomes ambiguous.
+
+### 18. Preserve what is not prose
+
+Code, commands, flags, file paths, identifiers, product names, error strings, legal wording, quoted material, and defined terms are not yours to improve. They are fixed strings, and editing one breaks the thing it names or misquotes the person who said it.
+
+This holds even when the fixed string contains something you would otherwise cut: a product genuinely called Seamless, an error message that reads `utilize`, a contract clause written in the passive. Leave it. Fix the prose around it.
+
+If one has to change — a renamed flag, an outdated command — say so in your response rather than doing it silently. A rewrite that quietly alters a command is worse than one that leaves it alone, because the reader has no reason to check.
 
 ---
 

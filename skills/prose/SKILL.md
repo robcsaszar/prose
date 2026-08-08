@@ -1,25 +1,6 @@
 ---
 name: prose
-description: >
-  Comprehensive writing skill for drafting, revising, and humanizing prose in two modes.
-  (1) DRAFT MODE — write new content in the correct voice and structure for the medium;
-  (2) REVIEW MODE — scan existing text for AI writing patterns, score it, and rewrite
-  in an authentic human voice. Auto-detects channel (Blog, social media, Email, IM,
-  Documentation, Creative) and applies channel-specific rules. Supports voice
-  calibration from a writing sample.
-
-  Use when writing blog posts, articles, documentation, runbooks, specs, emails,
-  social media posts, IM, marketing copy, or UI text. Also use for fiction, poetry,
-  scripts, and memoir. Also use when reviewing a draft for AI texture, humanizing
-  AI-generated writing, checking if text sounds like AI, rewriting in a specific
-  voice, or removing AI patterns.
-
-  Trigger phrases are humanize, sounds like AI, voice check, blog review,
-  rewrite in my voice, social media post review, email review,
-  write a blog post, draft this, remove AI patterns, AI detection,
-  write an email, write a social media post, review this doc, edit my scene.
-
-  Not for code comments, commit messages, or private notes.
+description: "Drafts, revises, and humanizes prose in two modes. DRAFT MODE writes new content in the correct voice and structure for the medium. REVIEW MODE scans existing text for AI writing patterns, scores it, and rewrites it in an authentic human voice. Detects the channel (blog, social media, email, IM, documentation, creative) and applies channel-specific rules, calibrating to a supplied writing sample. Use when writing blog posts, articles, documentation, runbooks, specs, emails, social media posts, IM, marketing copy, or UI text, and for fiction, poetry, scripts, and memoir. Also for reviewing a draft for AI texture, humanizing AI-generated writing, checking if text sounds like AI, rewriting in a stated voice, or removing AI patterns. Triggers are humanize, sounds like AI, voice check, blog review, rewrite in the user's voice, email review, draft this, remove AI patterns, write an email, write a social media post, review this doc, edit this scene. Don't use for code comments, commit messages, or private notes."
 ---
 
 # Prose
@@ -102,6 +83,8 @@ If a shell is available, also run the deterministic scanner on the draft — ant
 ```bash
 python3 scripts/slop-scan.py --channel <medium> draft.md
 ```
+
+Every script and reference path in this skill is relative to the skill directory, not the working directory. Installed as a plugin, the two are rarely the same: resolve `scripts/slop-scan.py` against the directory this `SKILL.md` was loaded from. Treat "file not found" as a path problem to fix once, not as "no shell" — falling through to the manual layer silently drops the whole deterministic pass.
 
 Fix debris unconditionally. Verify each phrase flag against the false-positive rules before changing it (the flagged word may simply be the right word). Structure notes feed the same judgment as required check 5.
 

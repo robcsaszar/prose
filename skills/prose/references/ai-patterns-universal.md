@@ -4,6 +4,18 @@ Apply to ALL content types regardless of channel. Flag every instance with exact
 
 **Structure outweighs vocabulary.** A 2026 study of 61,608 human- and model-written texts (University of Maryland / Google DeepMind, arXiv:2604.03136) found that surface-editing AI text — removing clichés and purple prose — barely moved a classifier reading only structural features: detection dropped from 95.5% to 93.9%. The durable signal is construction, not diction: the moral stated at the end of every paragraph, the single-track claim-support-takeaway shape, the tidy endings. Word-level tells also expire on their own ("delve" peaked in 2023–2024 and collapsed in 2025; newer models suppress em dashes), while structural habits persist across model generations. Fixing Part 1 without fixing Parts 2 and 5 produces text that still reads as AI.
 
+## Contents
+
+- [Part 1: Phrase-Level Markers](#part-1-phrase-level-markers)
+- [Part 2: Structural Markers](#part-2-structural-markers)
+- [Part 3: Style Patterns](#part-3-style-patterns)
+- [Part 4: Communication and Framing Patterns](#part-4-communication-and-framing-patterns)
+- [Part 5: Second-Order Tells — "Clean Slop" (Model House Style)](#part-5-second-order-tells--clean-slop-model-house-style)
+- [Part 6: What NOT to Flag (False Positives)](#part-6-what-not-to-flag-false-positives)
+- [Part 7: Signs of Human Writing (Preserve These)](#part-7-signs-of-human-writing-preserve-these)
+
+Parts 2 and 5 carry the durable signal. Read them before Part 1 when triaging a long piece.
+
 ---
 
 ## Part 1: Phrase-Level Markers

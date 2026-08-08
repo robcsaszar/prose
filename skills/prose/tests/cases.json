@@ -59,5 +59,35 @@
     "fixture": "noun-stack.md",
     "channel": "docs",
     "asserts": "The three real stacks fire. The six ordinary sentences below them, including the verb phrases that earlier versions of the rule misread as stacks, stay silent."
+  },
+  {
+    "id": "clean-technical",
+    "fixture": "clean-technical.md",
+    "channel": "blog",
+    "asserts": "The second false-positive guard, aimed at the staging and repetition rules. Human prose that brushes every one of them — 'she answered quietly', 'deeply nested', 'the first time I have seen', 'scope creep', a real question the text goes on to answer — stays silent. If a rule change makes this case fail, the change is wrong."
+  },
+  {
+    "id": "staging",
+    "fixture": "staging.md",
+    "channel": "blog",
+    "asserts": "Every staging and assertion family fires: futurism, manufactured suspense, countdown negation, rhetorical fragment, dramatic reveal, asserted obviousness, magic adverb, unicode arrows, and grandiose stakes."
+  },
+  {
+    "id": "repetition",
+    "fixture": "repetition.md",
+    "channel": "blog",
+    "asserts": "The structural tells fire on a runbook read as a blog post: anaphora, ordinal-labelled paragraphs, a verbatim duplicated block, and menu-path arrows. The duplicated paragraph reports once, not again at sentence level."
+  },
+  {
+    "id": "repetition-as-docs",
+    "fixture": "repetition.md",
+    "channel": "docs",
+    "asserts": "The same file under docs is completely silent. Procedures enumerate steps, repeat warnings on purpose, open consecutive steps the same way, and write menu paths with arrows. Proves the new CHANNEL_SUPPRESS entries do the work rather than the rules being dead."
+  },
+  {
+    "id": "concept-labels",
+    "fixture": "concept-labels.md",
+    "channel": "blog",
+    "asserts": "The three coined labels fire as one note. The four established terms in the same file — scope creep, the sunk cost fallacy, a power vacuum, the productivity paradox — stay out of it, proving the allowlist works."
   }
 ]

@@ -30,6 +30,15 @@ Shelf-life warning: this list decays. Each model generation retires the previous
 
 `crucial`, `essential`, `incredibly`, `significantly`, `vital` — when used without evidence.
 
+### Magic adverbs
+
+An adverb doing the work the sentence did not: `quietly`, `deeply`, `profoundly`, `radically`, `remarkably`, `subtly` attached to a verb of change so that an ordinary fact reads as momentous. The adverb asserts scale without supplying any, and "quietly" adds a second claim on top — that the writer noticed something others missed.
+
+**Before:** "The scheduler change is quietly reshaping how the team plans its week."
+**After:** "Since the scheduler change, sprint planning has moved from Monday to Thursday, and two teams stopped holding it at all."
+
+The adverbs are not the problem; the pairing is. `she answered quietly`, `a deeply nested config`, and `remarkably cheap` are ordinary usage. Flag the adverb-plus-transformation-verb pair, and leave hedging adverbs alone — `arguably` and `probably` sitting on a genuinely soft claim are a human signal (Part 7), not a tell.
+
 ### Promotional and advertisement-like language
 
 **Before:** "Nestled within the breathtaking region of Gonder, the town stands as a vibrant destination with rich cultural heritage and stunning natural beauty."
@@ -191,6 +200,30 @@ Watch for:
 
 Three-item parallel lists still count as regularity even when the count varies to four.
 
+### Anaphora
+
+Three or more consecutive sentences opening with the same words. Repetition at the head of a sentence is a real device, which is why the model reaches for it, but a device used once is emphasis and used four times in a row is a groove. The giveaway is that the repeated opener does no work: swap it for ordinary connectives and no meaning is lost.
+
+**Before:** "They promised faster builds. They promised smaller images. They promised a smaller attack surface."
+**After:** "They promised faster builds, smaller images, and a smaller attack surface. We got the images."
+
+Keep an anaphoric run only where the repetition is the point and the piece has just one of them.
+
+### Listicle in prose
+
+A numbered list rewritten as paragraphs, with the numbering left in as ordinal labels. Often the result of asking a model to stop producing bullets: it keeps the list and changes the costume. The tell is that the paragraphs are interchangeable — reorder them and nothing breaks, because they were list items.
+
+**Before:** "The first problem is cost... The second problem is latency... The third problem is staffing."
+**After:** Either use a real list, or make the paragraphs depend on each other: cost is what forced the caching layer, which is where the latency went, which is why one person now owns it full time.
+
+Watch for: `The first X is` / `The second X is` / `The third takeaway is` as paragraph openings. Ordinals in ordinary prose ("the first time we tried this") are not this pattern.
+
+### Verbatim duplication
+
+The same paragraph or sentence appearing twice in one piece, word for word. It happens when the model loses track of what it has already written, and it survives because nobody rereads a long draft end to end. Less common than it was, and an unambiguous sign of unedited output when it does appear.
+
+Repeated boilerplate is different: a warning restated at each step of a runbook is deliberate, and documentation is expected to repeat itself where a reader might enter mid-page.
+
 ### Stacked fragment cadence
 
 "X. Y. Z." format used as punchlines. Rewrite as a real sentence unless the break creates genuine emphasis.
@@ -214,6 +247,24 @@ Distinct from the negation cadence above: this is forcing an unrelated list into
 **Before:** "In this post, we've explored how X works, discussed Y, and shown why Z matters."
 **After:** A challenge, a principle, an open question, or the actual next step.
 
+### Fractal summaries
+
+The summary conclusion above, applied recursively: the document previews itself, then each section announces what it will cover and recaps what it covered, and paragraphs close by restating their own first sentence. Every level of the outline gets a lid. The reader is told the same thing three times at three altitudes, and the piece reads long without saying more.
+
+**Before:** "In this section we'll look at how retries interact with timeouts. [...] As we've seen, retries and timeouts interact badly."
+**After:** Open on the interaction itself and stop when it has been shown. Let the section end on its last piece of evidence.
+
+Keep at most one level of summary in a document, and only where a reader genuinely arrives mid-page. Reference material and specs are the exception: there, orientation text is navigation, not padding.
+
+### Historical analogy stacking
+
+Rapid-fire naming of companies or technology eras to borrow authority the argument has not earned. Common in technical and strategy writing. The tell is that no single example is examined — each one is a name doing rhetorical work, and cutting any of them costs the argument nothing, which means none of them was evidence.
+
+**Before:** "Apple didn't build the ride-hailing app. Amazon didn't build the vacation rental market. Stripe didn't build the storefronts."
+**After:** Take one case, and say what actually happened in it: who captured the margin, over what period, and what the platform owner did or failed to do about it.
+
+One worked example beats four gestured-at ones. Flag three or more in a row, especially when they share a sentence shape.
+
 ### Vague generic conclusions
 
 **Before:** "The future looks bright. Exciting times lie ahead as the company continues its journey toward excellence."
@@ -222,6 +273,15 @@ Distinct from the negation cadence above: this is forcing an unrelated list into
 ### Self-posed question as transition
 
 "Why? Because..." → Rewrite as a declarative statement.
+
+### Rhetorical fragment answers
+
+The same habit as above in its most compressed form: a bare noun phrase, a question mark, then the payoff. The question was never live — the model poses it so the answer arrives as a reveal instead of a statement. One per piece can land; the shape becomes a tic fast because it fits anywhere.
+
+**Before:** "We moved the migration to a Friday deploy. The result? Two days of silent data drift before anyone looked."
+**After:** "We moved the migration to a Friday deploy, and the data drifted silently for two days before anyone looked."
+
+Watch for: `The result?`, `The catch?`, `The worst part?`, `The best part?`, `The problem?`, `My advice?` followed by a one-word or one-clause answer. Genuine questions the text goes on to actually investigate are fine; this is the kind answered in the same breath.
 
 ### Runway sentences
 
@@ -279,6 +339,15 @@ No emojis in headings or as bullet-point decorations in prose contexts. Keep onl
 
 In chat, comments, casual Markdown, and text typed directly into editors: prefer straight ASCII quotes. Curly quotes read as pasted or auto-formatted.
 
+### Unicode arrows and decoration
+
+Arrows (`→`, `⇒`, `←`, `↔`) used inside running prose, where they stand in for a verb the writer did not pick. Somebody typing in an editor produces `->` or writes the relationship out; the typographic arrow arrives from a model or a formatter. Beyond the artifact itself, the arrow hides the claim: "engagement → revenue" asserts a mechanism without naming it.
+
+**Before:** "Faster feedback → fewer stalled reviews → higher throughput."
+**After:** "Faster feedback means reviewers stop context-switching, and the queue drains instead of growing."
+
+Not a tell in notation: file paths, menu paths (`Settings > Integrations`), state transitions, diagrams, and code samples all use arrows correctly, and the Documentation channel suppresses this rule for that reason.
+
 ### Passive voice
 
 Rewrite when active voice makes the sentence clearer and more direct.
@@ -292,6 +361,17 @@ Rewrite when active voice makes the sentence clearer and more direct.
 **After:** "The heavy beat adds to the aggressive tone."
 
 Clipped tailing-negation fragments: **Before** "The options come from the selected item, no guessing." **After** "The options come from the selected item without forcing the user to guess."
+
+Two further variants of the same move. The **em-dash dismissal** compresses it into one clause: "a caching problem — not a database one". The **cross-sentence reframe** negates a noun and repositions it: "The question isn't whether it scales. The question is who pays when it doesn't." Both are the negative parallelism with the seam moved; the fix is the same, which is to state the positive claim and never introduce the thing being denied.
+
+### Countdown negation
+
+Two or more negated fragments stacked before the reveal: "Not a bug. Not a feature. A design flaw that shipped." The model builds tension by eliminating candidates nobody had proposed, so the conclusion arrives as the survivor of a search rather than as a claim. It reads as a drumroll and carries no more information than the last fragment alone.
+
+**Before:** "Not a staffing problem. Not a tooling problem. A priorities problem."
+**After:** "It was a priorities problem. Nobody had been asked to own the backlog."
+
+The clipped-adverb version is the same shape: "not recklessly, not completely, but enough". Cut to the claim.
 
 ### Hyphenated word pair overuse
 
@@ -358,6 +438,15 @@ Turning an ordinary claim into a reusable-sounding aphorism that sounds profound
 
 Watch for: `X is the Y of Z`, `X becomes a trap`, `X is not a tool but a mirror`, `the language of`, `the currency of`, `the architecture of`.
 
+### Invented concept labels
+
+The same move as the aphorism formula, done with a noun instead of a sentence. An abstract problem-word — paradox, trap, creep, divide, vacuum, inversion, dilemma — gets welded to a domain word and then used as though it were an established, defined term. Naming a thing feels like analysing it, so the label does the work the argument was supposed to do. The reader is left agreeing with a phrase rather than a claim.
+
+**Before:** "This is the supervision paradox: the more you automate review, the more review you need."
+**After:** "Every automated check we added created a new class of failure that only a person could catch, so the review queue grew instead of shrinking."
+
+Watch for: coined `<domain word> + <problem noun>` pairs presented without definition, especially two or more in one piece. Established terms — `scope creep`, `the liquidity trap`, `the digital divide`, `the sunk cost fallacy` — are not this pattern; the test is whether the writer coined it in the sentence where it first appears.
+
 ### Conversational rhetorical openers
 
 A fake-candid hook manufacturing intimacy before an ordinary point. The tell is the theatrical pause-and-reveal: a one-word question or aside, then the "real" answer. A person being honest usually just says the thing.
@@ -366,6 +455,53 @@ A fake-candid hook manufacturing intimacy before an ordinary point. The tell is 
 **After:** "Whether it's worth the price depends on how often you'll use it."
 
 Watch for: `Honestly?`, `Look,`, `Here's the thing`, `The thing is`, `Let's be honest`, `Real talk` used as standalone hooks. Not a tell when these appear mid-sentence in ordinary casual writing — see Part 6.
+
+### Manufactured suspense
+
+A promise of revelation attached to an observation that did not need one. The transition sets up a payoff, the payoff is ordinary, and the gap between the two is the tell. It is the rhetorical opener above pointed forward instead of inward: rather than faking candour, it fakes a withheld secret.
+
+**Before:** "Here's the kicker: the retry logic ran on the same thread as the health check."
+**After:** "The retry logic ran on the same thread as the health check, so a slow retry marked the service unhealthy."
+
+Watch for: `Here's the kicker`, `Here's the deal`, `Here's the twist`, `Here's where it gets interesting`, `Here's what most people miss`, `Here's what nobody tells you`. Delete the frame and lead with the substance; if the fact is interesting it does not need the drumroll, and if it isn't, the drumroll makes it worse.
+
+### Asserted obviousness and the dramatic reveal
+
+Telling the reader the point is clear, simple, or settled, in place of showing that it is. The assertion substitutes for the evidence, and it usually appears exactly where the evidence is thinnest — a writer who has the argument tends to just make it.
+
+Its twin is the reveal: sweeping aside everything already said to announce the thing that supposedly matters. Both claim privileged access instead of earning agreement.
+
+**Before:** "The reality is simpler and less flattering. Everyone points to the vendor migration, but that's not the real story. The real story is incentives."
+**After:** "The vendor migration gets the blame, but the same teams missed the same deadline the year before, on the old stack. What changed in between was how the roadmap was funded."
+
+Watch for: `The truth is simple`, `The reality is simpler`, `History is unambiguous`, `the metrics are clear`, `the real story is`, `none of them is the real story`.
+
+### Patronizing analogy framing
+
+The explainer reflex. The model assumes the reader needs a metaphor before they can be told the fact, so every concept arrives pre-chewed. The analogies are often looser than the thing they explain, and stacking them means no single one is ever tested.
+
+**Before:** "Think of the scheduler as a maître d' seating tables. Think of each pod as a party of four."
+**After:** "The scheduler places pods on nodes with enough free CPU and memory, and holds the rest in a queue until something frees up."
+
+Watch for: `Think of it as`, `Think of it like`, `It's basically a`, `It's like a` used as the default entry to an explanation. One analogy per idea, only when the plain description is genuinely harder to follow, and never an analogy explaining another abstraction.
+
+### Futurism invitation
+
+An argument that opens by asking the reader to picture the world in which it has already won. Because the imagined scene is built from the conclusion, agreeing with the picture and agreeing with the claim feel like the same act, and nothing has been shown.
+
+**Before:** "Imagine a world where every tool you touch anticipates the next thing you need."
+**After:** "Two of our internal tools now prefill the next form from the last one. It saved about a minute per ticket and broke twice when the schema changed."
+
+Watch for: `Imagine a world where`, `Imagine a future in which`, `Imagine if every`, `In that world,`. Describe what exists, or what was actually built and what it cost.
+
+### Grandiose stakes inflation
+
+Every argument scaled up to world-historical significance. A post about queue depth becomes a claim about the future of work. Inflation is cheap to write and it costs the reader calibration: when everything is described as decisive, nothing in the piece carries weight.
+
+**Before:** "This will fundamentally reshape how we think about developer tooling and define the next decade of software."
+**After:** "This removes one step from a workflow that four teams run daily. It is not a large change; it is a frequent one."
+
+Watch for: `will define the next era`, `fundamentally reshape`, `changes everything`, `something entirely new`, `the future of X depends on`. Related to the significance inflation in Part 1, at document scale rather than sentence scale.
 
 ### Signposting and announcements
 
@@ -436,6 +572,15 @@ Studies "quietly kill", findings "demolish", data "buries" a claim. Dramatizatio
 
 `The real question is`, `Here's what that means in practice`, `Here's the thing`, `The part that got me:` — replacement phrases that became tells themselves.
 
+### Performative vulnerability
+
+Simulated candour. The text breaks frame to admit a bias, name its own weakness, or confess an allegiance, and the admission costs the writer nothing. It is what a cleanup pass produces when told to sound more human: the shape of self-awareness without the exposure that makes self-awareness worth reading.
+
+**Before:** "And yes, full disclosure, I'm openly biased toward this architecture. This isn't a rant; it's a diagnosis."
+**After:** Either cut it, or make it real: "I picked this architecture in 2023 and argued for it publicly. The migration took two quarters longer than I told the team it would."
+
+The test is whether the admission can be used against the writer. Real vulnerability names a specific decision, a number, or a cost. Performative vulnerability names a disposition and moves on, and it usually arrives pre-forgiven — announcing the flaw is treated as having dealt with it. Distinguish it carefully from the genuine self-corrections Part 7 protects.
+
 ### Replacement tics
 
 Any substitute phrase repeated across three texts becomes a marker in its own right, whatever the phrase is. A worn phrase is rarely fixed by a fresher phrase — most of the time the right replacement is nothing: delete the framing and lead with the substance. When a review finds one, add it to this section or the formula watchlist, and add a scanner rule if it is mechanical.
@@ -466,6 +611,10 @@ A clean human writer can hit several patterns above without any AI involvement. 
 - **Fixed strings** — code, commands, flags, identifiers, file paths, product names, error messages, legal phrasing, and defined terms are not prose. A watched word inside one of them is part of the string, and changing it breaks the thing it names
 - **Craft in the creative channel** — fragments, repetition, intentional ambiguity, and a character who talks in stock phrases are all deliberate in fiction, scripts, and poetry. Judge them against the effect they produce, not against a pattern list. Dialogue in particular is allowed to sound like a person with verbal tics, because people have them
 - **The uniform shape of a procedure** — matching paragraph lengths, steady sentence rhythm, and unvarying confidence are what make a runbook followable. In documentation these are the target, not the tell
+- **Established terms that look like coinages** — `scope creep`, `the liquidity trap`, `the digital divide`, `the sunk cost fallacy`, `the productivity paradox`, and `a power vacuum` all match the invented-concept-label shape and are ordinary vocabulary. The tell is a label coined in the sentence where it first appears, and a cluster of them in one piece; a single conventional term is not evidence of anything
+- **Arrows and symbols outside prose** — an arrow inside a file path, a menu path (`Settings > Integrations`), a state transition, a diagram, or a code sample is notation doing its job. The pattern is arrows used as decoration in running sentences, standing in for a verb the writer did not choose
+- **Genuine self-correction** — a writer visibly changing their mind, conceding a specific point, or naming a decision that went badly is the human signal Part 7 protects. It only becomes performative vulnerability when the admission is a disposition rather than an event and costs the writer nothing. "I was wrong about the index" stays; "I'll admit I'm a bit of an optimist here" goes
+- **Repetition the medium requires** — a warning restated at each step of a procedure, a definition repeated in a reference page, or a refrain in verse is deliberate. Verbatim duplication is a tell in argued prose, not in formats a reader enters halfway
 
 When in doubt, look for clusters of tells, not isolated ones. A single em dash means nothing; an em dash plus rule-of-three plus `vibrant tapestry` plus a "Challenges and Future Prospects" section is a confession.
 

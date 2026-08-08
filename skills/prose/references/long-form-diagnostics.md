@@ -20,6 +20,12 @@ Use only when required checks are not enough for a longer piece — usually when
 
 - **Motif audit.** If the same image, opposition, or repeated wording carries the piece, remove at least one instance unless each recurrence changes the argument.
 
+- **Thesis-restatement audit.** State the controlling claim in one sentence. Then go paragraph by paragraph and mark the ones that only restate it with a different metaphor, example, or framing. More than two, cut them: a single argument padded to feel comprehensive is longer, not stronger, and the reader notices the circling before they can name it.
+
+- **Fractal-summary audit.** Check whether the piece summarises itself at more than one altitude — a document preview, plus sections that announce what they will cover and recap what they covered, plus paragraphs that close by restating their own opening. Keep one level at most, and only where a reader genuinely arrives mid-page. Reference material and specs are exempt; there, orientation text is navigation.
+
+- **Analogy-stacking audit.** Count consecutive sentences whose only content is a company name, product, or technology era doing the same rhetorical work. Three or more in a row is borrowed authority rather than evidence: none of the examples was examined, so cutting any of them costs nothing. Keep one and say what actually happened in it.
+
 - **Cadence check.** Re-read one paragraph slowly. If it sounds like a press release, investor memo, or encyclopedia entry, flatten it.
 
 - **Catalog audit.** If one paragraph names three or more terms, features, or labels from the same milestone, or jumps through multiple milestones in short order, rewrite around one consequence instead.

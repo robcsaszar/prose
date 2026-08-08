@@ -28,6 +28,18 @@ Not bans. Quick places to scan when default LLM writing slips into formula. Do n
 - Vague source laundering: `experts say`, `observers note`, `research suggests`, `critics argue`, `many believe`
 - Unsupported causality: `drove`, `proved`, `showed that`, `made clear that`, `tracked with`, `led directly to`
 - `X today is not the X it was at the start`
+- Countdown negation: `Not X. Not Y. Just Z.` — candidates eliminated before a claim nobody contested
+- `The result?` / `The catch?` / `The worst part?` — a noun phrase, a question mark, then the answer
+- `Here's the kicker` / `Here's the deal` / `Here's where it gets interesting` / `Here's what most people miss`
+- `Think of it as` / `Think of it like` / `It's basically a` as the default entry to an explanation
+- `Imagine a world where` / `Imagine if every` / `In that world,`
+- `The truth is simple` / `The reality is simpler` / `History is unambiguous` / `the metrics are clear`
+- `the real story is` / `none of them is the real story`
+- `will define the next era` / `fundamentally reshape` / `changes everything`
+- Magic adverbs on verbs of change: `quietly reshaping`, `profoundly altering`, `radically redefining`
+- Coined concept labels: `the <domain word> paradox` / `trap` / `creep` / `divide`, used as if already defined
+- Three or more consecutive sentences opening with the same words
+- `The first X is` / `The second X is` as paragraph openings — a list wearing paragraph clothes
 - `found its feet` / `found its identity`
 - `proof of concept`
 - Paragraph-closing type definitions: `the kind of X where Y`
@@ -63,6 +75,7 @@ The problem is repeated fallback diction, not the existence of any one word.
 ## Formatting artifacts in plain text
 
 - Smart quotes and curly apostrophes (in chat / plain-text contexts)
+- Unicode arrows in running prose: `→`, `⇒`, `←`, `↔`. Notation is fine — file paths, menu paths, state transitions, diagrams — but an arrow inside a sentence is standing in for a verb
 - Single-character ellipses
 - Other visible copy-paste formatting artifacts that do not fit the medium
 

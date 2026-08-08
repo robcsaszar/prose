@@ -55,6 +55,8 @@ TYPOGRAPHY = [
      "em/en dash: allowed only if the voice profile or medium permits it"),
     ("mixed-quotes", None,  # handled specially: both curly and straight in one text
      "curly and straight quotes mixed in one text"),
+    ("arrows", r"[→⇒←↔⟶⟹]",
+     "unicode arrow in prose: type -> or write the verb"),
 ]
 
 # Formula phrases. Grouped by the habit behind them; the regexes are literal.
@@ -64,6 +66,10 @@ PHRASES = [
     ("inflation", r"\bplays? a (vital|significant|crucial|pivotal|key) role\b", "inflated significance"),
     ("inflation", r"\bunderscor(es|ing) (its|the) (importance|significance)\b", "inflated significance"),
     ("inflation", r"\b(left an indelible mark|enduring legacy|cannot be overstated|a pivotal moment|key turning point)\b", "inflated significance"),
+    # stakes inflated to world-historical scale
+    ("inflation", r"\bdefine the (next|coming) (era|decade|generation|chapter)\b", "grandiose stakes"),
+    ("inflation", r"\bfundamentally (reshap\w+|alter\w+|transform\w+|chang\w+)\b", "grandiose stakes"),
+    ("inflation", r"\bchanges everything\b|\breshape how we think about\b", "grandiose stakes"),
     # promotional tone
     ("promo", r"\b(boasts? a|nestled in|in the heart of|breathtaking|state-of-the-art|cutting-edge|commitment to excellence|rich (heritage|history|tapestry))\b", "promotional tone"),
     ("promo", r"\b(seamlessly|effortlessly|groundbreaking|must-visit|renowned)\b", "promotional tone"),
@@ -72,6 +78,14 @@ PHRASES = [
     ("parallelism", r"\b[Ii]t'?s not (about )?\w+[^.!?]{0,40}[,;] it'?s\b", "negative parallelism"),
     ("parallelism", r"\bThat'?s not [a-z][^.!?]*\. That'?s\b", "upgraded negative parallelism"),
     ("parallelism", r"\b[Tt]his isn'?t \w+[^.!?]{0,40}[,;] it'?s\b", "negative parallelism"),
+    # Countdown negation: two negated fragments before the reveal. The rules
+    # above all need a 'but' or a comma splice, so this shape slips past them.
+    ("parallelism", r"\bNot\b[^.!?]{1,40}\.\s+Not\b", "countdown negation"),
+    ("parallelism", r"\bnot \w+ly, not \w+ly\b", "countdown negation"),
+    # A question nobody asked, answered on the spot. The tell is the shape:
+    # a bare determiner-led noun phrase, a question mark, then the payoff.
+    ("rhetorical-fragment", r"(?:^|[.!?]\s+)(?:The|Their|His|Her|Its|Our|My) (?:\w+ ){0,2}\w+\?(?=\s+[A-Z])",
+     "self-posed question answered on the spot"),
     # didactic disclaimers
     ("disclaimer", r"\b[Ii]t('?s| is) (important|crucial|critical|worth) (to note|to remember|noting|mentioning)\b", "didactic disclaimer"),
     ("disclaimer", r"\b[Ii]t should be noted that\b|\b[Kk]eep in mind that\b", "didactic disclaimer"),
@@ -95,6 +109,25 @@ PHRASES = [
     ("hook", r"\b[Hh]ere'?s the thing[:.]|\b[Ll]et'?s be (honest|real)\b|\bSpoiler( alert)?:|\bPlot twist:|\bthe secret sauce\b", "fake casualness"),
     ("hook", r"\bThe real question is\b|\bHere'?s what that means( in practice)?\b|\bThe part that got me\b", "recycled hook (post-cleanup tell)"),
     ("hook", r"\b[Ll]et'?s (dive|delve) in(to)?\b|\b[Ww]ithout further ado\b|\bhere'?s what you need to know\b", "signposting"),
+    # suspense promised, revelation not delivered
+    ("hook", r"\b[Hh]ere'?s (the kicker|the deal|the twist|the catch)\b", "manufactured suspense"),
+    ("hook", r"\b[Hh]ere'?s (where it gets \w+|what (most people|nobody|everyone) \w+)", "manufactured suspense"),
+    ("hook", r"\b[Tt]he real story is\b|\bnone of (them|that) is the real\b", "dramatic reveal"),
+    # the point asserted instead of argued
+    ("asserted-obvious", r"\b[Tt]he (truth|reality|answer|math) is (simple|simpler|clear|obvious|unambiguous)\b",
+     "asserted rather than shown"),
+    ("asserted-obvious", r"\b[Hh]istory is (clear|unambiguous)\b|\b[Tt]he (metrics|numbers|examples|data) are clear\b",
+     "asserted rather than shown"),
+    # explainer reflex: the reader is assumed to need a metaphor
+    ("analogy-framing", r"\b[Tt]hink of (it|this|them|these) (as|like)\b", "patronizing analogy frame"),
+    # futurism invitation
+    ("futurism", r"\b[Ii]magine (a world|a future|a version of|if every)\b", "futurism invitation"),
+    # Significance supplied by adverb. The verb is required: without it the rule
+    # eats 'she answered quietly' and 'a deeply nested config', which are fine.
+    # 'fundamentally' is deliberately absent — the inflation rule owns it.
+    ("adverb", r"\b(quietly|deeply|profoundly|radically|remarkably|subtly)\s+"
+               r"(reshap|transform|redefin|orchestrat|disrupt|alter|rewrit|reinvent|reimagin|upend|reconfigur)\w*",
+     "significance supplied by adverb"),
     # self-summary and template endings
     ("summary", r"\b[Ii]n (summary|conclusion)\b|\bTo sum up\b|\bAll in all\b|^Overall,", "self-summary"),
     ("summary", r"\bDespite these challenges\b|\bChallenges and Future (Outlook|Prospects|Directions)\b", "challenges-and-prospects template"),
@@ -171,30 +204,88 @@ EMOJI = re.compile("[\U0001F300-\U0001FAFF☀-➿]")
 
 SENT_SPLIT = re.compile(r"(?<=[.!?])\s+")
 
+# A list wearing paragraph clothes. The verb has to sit right behind the noun:
+# 'The first wall is' is a labelled list item, 'The first one needs a slope' is
+# a sentence. Without that anchor the rule eats ordinary ordinal prose.
+# \s+ rather than a literal space: this runs over the whole text, where a
+# wrapped line puts a newline in the middle of the phrase.
+ORDINAL_LEAD = re.compile(
+    r"\bThe\s+(first|second|third|fourth|fifth)\s+\w+\s+(is|was|comes|involves)\b")
+
+# Repeating the opening of a sentence is a device; repeating it three times in
+# a row is a machine finding a groove.
+ANAPHORA_MIN_RUN = 3
+
+# Word floors for duplicate detection. Short repeats are ordinary — headings,
+# list stubs, 'See below.' — so only substantial blocks count as duplication.
+DUP_PARA_MIN_WORDS = 15
+DUP_SENT_MIN_WORDS = 12
+
+NORMALIZE_STRIP = re.compile(r"[^a-z0-9 ]+")
+
+# An abstract problem-noun welded to a domain word and used as if it were an
+# established term. One is usually a real term of art; a cluster is the tell,
+# so this reports only when two distinct labels share a text.
+CONCEPT_LABEL = re.compile(
+    r"\b(?:the\s+)?([a-z][a-z-]{2,})\s+"
+    r"(paradox|trap|fallacy|inversion|vacuum|divide|creep|dilemma)\b")
+
+# Terms that fit the shape but are genuinely established. Naming them here is
+# cheaper than trying to write a regex that can tell coinage from convention.
+CONCEPT_LABEL_ALLOW = frozenset(t.strip() for t in """
+scope creep, feature creep, mission creep, requirement creep, requirements creep,
+digital divide, great divide, cultural divide, partisan divide, racial divide,
+cost fallacy, naturalistic fallacy, logical fallacy, common fallacy, gamblers fallacy,
+productivity paradox, fermi paradox, liar paradox, birthday paradox, simpsons paradox,
+poverty trap, liquidity trap, value trap, tourist trap, speed trap, death trap,
+population inversion, yield inversion, curve inversion, temperature inversion,
+power vacuum, security vacuum, policy vacuum, leadership vacuum,
+security dilemma, ethical dilemma, moral dilemma, false dilemma, prisoners dilemma,
+innovators dilemma, social dilemma
+""".split(",") if t.strip())
+
+
 # Rules each channel legitimately breaks. Suppressed by default; --allow adds
 # to this, never subtracts. DEBRIS ignores both.
 #
 # docs — a procedure is supposed to be uniform. Steady sentence length and
 #   matching paragraph shapes are what make steps followable, and a runbook
-#   that hedges is a defective runbook.
+#   that hedges is a defective runbook. Procedures also enumerate steps, repeat
+#   warning blocks on purpose, and write menu paths as 'File > Save'.
 # creative — dashes mark interrupted speech, and the hook and parallelism
 #   patterns fire on things a character can plausibly say. Vocabulary,
 #   promotional, and self-summary rules still apply: those are slop in any
-#   genre.
+#   genre. Anaphora is a deliberate device in verse, not a groove.
 CHANNEL_SUPPRESS = {
     "blog": frozenset(),
     "social": frozenset({"emoji"}),
     "email": frozenset(),
     "im": frozenset({"monotony", "no-short-sentences", "uniform-paragraphs",
                      "uniform-confidence", "aphorism-budget",
-                     "title-case-heading", "emoji"}),
+                     "title-case-heading", "emoji",
+                     "anaphora", "ordinal-listicle", "duplicate-block"}),
     "docs": frozenset({"monotony", "no-short-sentences", "uniform-paragraphs",
-                       "uniform-confidence", "aphorism-budget"}),
+                       "uniform-confidence", "aphorism-budget",
+                       "anaphora", "ordinal-listicle", "duplicate-block",
+                       "arrows"}),
     "creative": frozenset({"em-dash", "monotony", "no-short-sentences",
                            "uniform-confidence", "aphorism-budget",
                            "title-case-heading", "hook", "parallelism",
-                           "noun-stack"}),
+                           "noun-stack",
+                           "anaphora", "rhetorical-fragment",
+                           "analogy-framing", "futurism", "concept-label"}),
 }
+
+
+def normalize_block(text):
+    """Lowercase, strip punctuation, collapse whitespace — for equality only."""
+    return " ".join(NORMALIZE_STRIP.sub(" ", text.lower()).split())
+
+
+def first_words(sentence, n=2):
+    """The first n words, lowercased and stripped, or None if too short."""
+    words = normalize_block(sentence).split()
+    return " ".join(words[:n]) if len(words) >= n else None
 
 
 def noun_stack_hits(line):
@@ -315,6 +406,56 @@ def structure_notes(text):
     if punchy >= 3:
         notes.append(("aphorism-budget", f"{punchy} paragraphs close on a short "
                       "punchy line — budget is one per text"))
+
+    # Anaphora: three or more consecutive sentences opening the same way.
+    run_prefix, run_len = None, 0
+    for s in sents + [""]:
+        prefix = first_words(s)
+        if prefix is not None and prefix == run_prefix:
+            run_len += 1
+            continue
+        if run_prefix and run_len >= ANAPHORA_MIN_RUN:
+            notes.append(("anaphora", f"{run_len} consecutive sentences open with "
+                          f"{run_prefix!r} — vary the opening"))
+        run_prefix, run_len = prefix, 1
+
+    # A numbered list rewritten as paragraphs to look like prose.
+    ordinals = {m.group(1) for m in ORDINAL_LEAD.finditer(text)}
+    if len(ordinals) >= 2:
+        notes.append(("ordinal-listicle", f"{len(ordinals)} ordinal-labelled sentence "
+                      "openings — this is a list wearing paragraph clothes"))
+
+    # Verbatim duplication: the same block of text twice in one piece.
+    # Paragraphs and sentences are counted in separate passes, because a
+    # one-sentence paragraph appears in both lists and counting them together
+    # would report every such paragraph as a duplicate of itself. A duplicated
+    # paragraph also duplicates its own sentences, so a sentence already inside
+    # a reported block is skipped rather than reported a second time.
+    reported = []
+    for blocks, floor in ((paras, DUP_PARA_MIN_WORDS), (sents, DUP_SENT_MIN_WORDS)):
+        counts = {}
+        for block in blocks:
+            norm = normalize_block(block)
+            if len(norm.split()) >= floor:
+                counts[norm] = counts.get(norm, 0) + 1
+        for norm, count in sorted(counts.items()):
+            if count < 2 or any(norm in seen for seen in reported):
+                continue
+            reported.append(norm)
+            excerpt = norm[:60] + ("..." if len(norm) > 60 else "")
+            notes.append(("duplicate-block", f"a block appears {count} times "
+                          f"verbatim: {excerpt!r}"))
+
+    # Invented concept labels: coined terms used as if already defined.
+    labels = set()
+    for m in CONCEPT_LABEL.finditer(text.lower()):
+        label = f"{m.group(1)} {m.group(2)}"
+        if label not in CONCEPT_LABEL_ALLOW:
+            labels.add(label)
+    if len(labels) >= 2:
+        listed = ", ".join(sorted(labels)[:4])
+        notes.append(("concept-label", f"{len(labels)} coined concept labels "
+                      f"({listed}) — name the thing or make the argument"))
 
     # Title-case headings
     for m in re.finditer(r"^(#{1,6})\s+(.+)$", text, re.MULTILINE):

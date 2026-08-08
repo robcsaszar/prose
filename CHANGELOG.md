@@ -2,6 +2,34 @@
 
 All notable changes to this project are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning follows [SemVer](https://semver.org/).
 
+## [0.8.0] - 2026-08-08
+
+### Added
+
+- **Repetition and shape tells.** Four structural patterns the scanner passed clean: anaphora (three or more consecutive sentences opening with the same words), ordinal-labelled paragraphs that are a numbered list in paragraph costume, verbatim duplication of a paragraph or sentence, and countdown negation ("Not a bug. Not a feature. A design flaw."), which every existing parallelism rule missed because they all require a `but` or a comma splice. These are ordered first deliberately: structural habits survive paraphrase and outlast the vocabulary of any one model generation.
+- **Staging and assertion tells.** The framing moves that promise significance instead of earning it: manufactured suspense (`Here's the kicker`, `Here's where it gets interesting`), self-posed questions answered on the spot (`The result? Devastating.`), patronizing analogy frames (`Think of it as...`), futurism invitations (`Imagine a world where...`), asserted obviousness (`The truth is simple`, `History is unambiguous`), the dramatic reveal (`the real story is`), grandiose stakes inflation (`will define the next era`), and coined concept labels used as though already defined (`the supervision paradox`). Performative vulnerability joins the second-order tells in Part 5, where it belongs — it is what a cleanup pass produces when told to sound more human.
+- **Surface artifact tells.** Magic adverbs, scoped to the adverb-plus-transformation-verb pair (`quietly reshaping`) so that `she answered quietly` and `a deeply nested config` stay silent, and unicode arrows used as decoration in running prose.
+- **Judgment-only additions** for the tells no regex should attempt: one-point dilution and fractal summaries get audits in `long-form-diagnostics.md`; historical analogy stacking gets a pattern entry. Automating these would flag ordinary prose more often than slop.
+- **Required check 14, staging and assertion.** Counts the moves that promise significance instead of delivering it and budgets them at one per piece. Appended rather than inserted so the existing check numbering, which the short-piece routing depends on, is untouched.
+- **Six scanner rule-ids and four structure notes.** New flags `rhetorical-fragment`, `analogy-framing`, `futurism`, `asserted-obvious`, `adverb`, and typography rule `arrows`; new notes `anaphora`, `ordinal-listicle`, `concept-label`, and `duplicate-block`. Existing `hook`, `inflation`, and `parallelism` gained regexes rather than new ids, so hits keep aggregating under the habit they belong to.
+- **Five test cases and four fixtures**, including `clean-technical.md`, a second false-positive guard written to brush every new rule without being slop — an ordinary "she answered quietly", a "deeply nested" config, "the first time I have seen", "scope creep", and a real question the text goes on to answer. It asserts silence, so a rule that starts flagging ordinary writing fails the build. `repetition.md` is paired across docs and blog to prove the new channel suppressions are load-bearing in both directions.
+
+### Changed
+
+- `CHANNEL_SUPPRESS` gains entries for the new rules where a medium legitimately breaks them. Documentation suppresses anaphora, ordinal labels, duplicate blocks, and arrows, because procedures enumerate steps, repeat warnings on purpose, open consecutive steps the same way, and write menu paths with arrows. Creative suppresses anaphora, rhetorical fragments, analogy frames, futurism, and concept labels, because anaphora is a device in verse and a character is allowed to talk in stock phrases. IM suppresses anaphora, ordinal labels, and duplicate blocks alongside the uniformity rules it already skipped, since a message short enough to repeat a line is short enough for the reader to see it.
+- The invented-concept-label note reports only when two or more distinct coinages share a text, and an allowlist exempts established terms that fit the same shape (`scope creep`, `the liquidity trap`, `the digital divide`, `the sunk cost fallacy`). One such phrase is usually a real term of art; a cluster is the tell.
+- `ai-patterns-universal.md` Part 6 gains four false-positive rules: established terms that look like coinages, arrows in notation rather than prose, genuine self-correction as distinct from performative vulnerability, and repetition the medium requires.
+- Required checks 5, 6, and 13 absorbed the new tells that belong to tripwires already in place, rather than growing the list. Check 6 gains a concrete threshold for the dead metaphor: one image carrying five or more paragraphs.
+- Two whole-text scanner regexes now match across a line break. They used literal spaces, so a wrapped line put a newline in the middle of the phrase and the pattern silently missed it.
+
+### Fixed
+
+- The review report template offered four channels and "Other" although Step 0 has detected six since 0.7.0. A review of a runbook or a scene had nowhere correct to record its own detection.
+- `SKILL.md` opened with an H1 of "Writing" while its frontmatter `name` was `prose`, a leftover from the rename in 0.7.0.
+- The frontmatter `description` ran to 1,132 characters against a 1,024 limit, so the tail was liable to be cut — and the tail was the trigger phrase list, the part that decides whether the skill loads at all. Rewritten to 1,020 as a single-line value rather than a folded block, and the two first-person triggers (`rewrite in my voice`, `edit my scene`) reworded, since first person in a description degrades matching.
+- `scripts/slop-scan.py` was given as a bare relative path with nothing saying what it is relative to. Installed as a plugin the working directory is the user's project, so the command fails, and `SKILL.md` reads that failure as "no shell available" and falls through to the manual layer — losing the deterministic pass without saying so. The path convention is now stated where the scanner is introduced.
+- `ai-patterns-universal.md` (637 lines) and `drafting-core.md` (309) gained tables of contents. Both are loaded whole, and neither could be navigated to a part without reading to it.
+
 ## [0.7.0] - 2026-08-06
 
 ### Added
@@ -45,5 +73,6 @@ All notable changes to this project are documented here. Format follows [Keep a 
 
 - Initial release: prose skill.
 
+[0.8.0]: https://github.com/robcsaszar/prose/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/robcsaszar/prose/compare/v0.5.0...v0.7.0
 [0.5.0]: https://github.com/robcsaszar/prose/releases/tag/v0.5.0

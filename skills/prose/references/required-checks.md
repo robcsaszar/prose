@@ -1,6 +1,6 @@
 # Required Checks
 
-For pieces up to ~150 words or three short paragraphs, run checks 1–5, 7, 10, 11, and 12.
+For pieces up to ~150 words or three short paragraphs, run checks 1–5, 7, 10, 11, 12, and 14.
 For longer pieces, run all checks.
 
 These are tripwires, not goals. Do not output the audit unless asked.
@@ -15,9 +15,9 @@ These are tripwires, not goals. Do not output the audit unless asked.
 
 4. **Source-fit check.** For factual writing, check every exact quote, close paraphrase, public metric, planned event, and causal claim. Do not keep "X caused Y", "X drove Y", or "X proved Y" unless the source supports the relationship. Use weaker relationship language only when that weaker claim is still accurate.
 
-5. **Regularity and sentence-continuity tripwire.** Name the single most repeated visible pattern in the piece. If the same move appears 3 or more times, or dominates two consecutive paragraphs, rewrite at least one occurrence. Also scan for false crispness: two or more neighboring short sentences whose thoughts are tightly related but split apart. If a comma, conjunction, subordinate clause, colon, or semicolon would express the relationship more naturally, combine one pair. If the period creates useful emphasis or clarity, keep it.
+5. **Regularity and sentence-continuity tripwire.** Name the single most repeated visible pattern in the piece. If the same move appears 3 or more times, or dominates two consecutive paragraphs, rewrite at least one occurrence. Three named instances to check by name: three or more consecutive sentences opening with the same words; paragraphs labelled by ordinal ("The first X is... The second X is..."), which is a list in paragraph costume; and any paragraph or sentence repeated verbatim, which is an automatic rewrite rather than a judgment call. Also scan for false crispness: two or more neighboring short sentences whose thoughts are tightly related but split apart. If a comma, conjunction, subordinate clause, colon, or semicolon would express the relationship more naturally, combine one pair. If the period creates useful emphasis or clarity, keep it.
 
-6. **Repeated-frame check.** If a central metaphor, contrast, or wording family appears throughout the piece, decide whether it is a useful motif or a too-neat scaffold. Keep it only where it adds force; vary or cut the rest.
+6. **Repeated-frame check.** If a central metaphor, contrast, or wording family appears throughout the piece, decide whether it is a useful motif or a too-neat scaffold. Keep it only where it adds force; vary or cut the rest. Concrete threshold: a single image carrying five or more paragraphs is a dead metaphor, not a motif. Introduce it, use it, move on.
 
 7. **Stance and voice.** If the genre expects a visible writer or evaluative stance, state the writer's view in one sentence to yourself. If you cannot, add stance where it does real work. If the genre expects neutrality, did you keep it neutral?
 
@@ -32,6 +32,8 @@ These are tripwires, not goals. Do not output the audit unless asked.
 12. **Verbatim integrity.** List every fixed string in the piece — code, commands, flags, file paths, identifiers, product names, error text, quoted material, legal phrasing, defined terms — and confirm each one is unchanged from the source. A rewrite that improves the prose around a command and edits the command has broken the document. If one had to change, say so in your response rather than leaving the reader to find it.
 
 13. **Hedge economy and punch budget.** Insure a fragile point once — "this looks like", "still a hypothesis" — at the exact claim it applies to; a qualifier after every sentence is its own AI pattern. Then the inverse: count the aphoristic paragraph-closing one-liners. More than one, demote the rest to plain statements. Confirm there is slack somewhere — at least one sentence that isn't trying to impress — and that confidence varies across the text. Every-sentence-lands and every-claim-equally-sure are both machine signatures.
+
+14. **Staging and assertion.** Count the moves that promise significance instead of delivering it, and keep at most one in the whole piece: suspense frames ("Here's the kicker", "Here's where it gets interesting"); analogy frames ("Think of it as..."); futurism invitations ("Imagine a world where..."); self-posed questions answered on the spot ("The result? Devastating."); and countdown negations that eliminate candidates nobody proposed. Then the assertion half: delete every sentence that tells the reader the point is simple, clear, obvious, or settled, and either show it or drop the claim. Same test for coined concept labels — a "supervision paradox" the piece invented in the sentence where it first appears is a name doing the argument's job. Finally, check any admission of bias or weakness: if it names a disposition rather than a decision, and costs the writer nothing, cut it.
 
 ---
 

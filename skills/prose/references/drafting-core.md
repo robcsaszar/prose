@@ -2,6 +2,15 @@
 
 Rules for writing new content. Load when drafting anything longer than 200 words.
 
+## Contents
+
+- [Default Voice](#default-voice) — used when no sample and no saved profile exist
+- [Precedence](#precedence) — which rule wins when two conflict
+- [Medium Routing](#medium-routing) — per-channel shape and length
+- [Core Rules](#core-rules) — the bulk of this file
+- [Structural Techniques (Posts and Articles)](#structural-techniques-posts-and-articles)
+- [Safety Rails](#safety-rails)
+
 ---
 
 ## Default Voice

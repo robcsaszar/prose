@@ -5,7 +5,7 @@ Use this structure for all review outputs.
 ```
 ## [Content Type] Review
 
-**Detected as:** [Blog Post / Social Media / Email / IM / Other]
+**Detected as:** [Blog Post / Social Media / Email / IM / Documentation / Creative]
 
 ### Overall Assessment
 [2-3 sentences: strengths + biggest issues]

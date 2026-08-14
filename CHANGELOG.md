@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning follows [SemVer](https://semver.org/).
 
+## [0.9.0] - 2026-08-14
+
+### Changed
+
+- Description rewritten as trigger conditions rather than a mode-by-mode workflow summary, so the router cannot act on it in place of loading the body. All existing trigger keywords, channel list, and the negative trigger are preserved. Length drops from 1020 to 615 characters, clearing the 1024-character cap it sat four characters below.
+
 ## [0.8.0] - 2026-08-08
 
 ### Added

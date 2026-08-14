@@ -1,6 +1,6 @@
 ---
 name: prose
-description: "Use when writing or revising any human-facing prose — blog posts, articles, documentation, runbooks, specs, emails, social media posts, IM, marketing copy, or UI text, and for fiction, poetry, scripts, and memoir. Also use when a draft needs checking or fixing for AI writing patterns, or rewriting to match a stated or sampled voice. Triggers are humanize, sounds like AI, voice check, blog review, rewrite in the user's voice, email review, draft this, remove AI patterns, write an email, write a social media post, review this doc, edit this scene. Don't use for code comments, commit messages, or private notes."
+description: "Drafts, revises, and humanizes prose. Use when writing or revising anything human-facing — blog posts, articles, documentation, runbooks, specs, emails, social media posts, IM, marketing copy, or UI text, and for fiction, poetry, scripts, and memoir. Also use when a draft needs checking or fixing for AI writing patterns, or rewriting to match a stated voice. Detects the channel and applies channel-specific rules, and calibrates to a writing sample when one is supplied. Triggers are humanize, sounds like AI, voice check, blog review, rewrite in the user's voice, email review, draft this, remove AI patterns, write an email, write a social media post, review this doc, edit this scene. Don't use for code comments, commit messages, or private notes."
 ---
 
 # Prose

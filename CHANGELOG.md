@@ -6,7 +6,7 @@ All notable changes to this project are documented here. Format follows [Keep a 
 
 ### Changed
 
-- Description rewritten as trigger conditions rather than a mode-by-mode workflow summary, so the router cannot act on it in place of loading the body. All existing trigger keywords, channel list, and the negative trigger are preserved. Length drops from 1020 to 615 characters, clearing the 1024-character cap it sat four characters below.
+- Description rewritten as trigger conditions rather than a mode-by-mode workflow summary, so the router cannot act on it in place of loading the body. All existing trigger keywords, the channel list, channel detection, writing-sample calibration, and the negative trigger are preserved. Length drops from 1020 to 754 characters, clearing the 1024-character cap it sat four characters below.
 
 ## [0.8.0] - 2026-08-08
 

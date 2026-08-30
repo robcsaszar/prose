@@ -1,6 +1,6 @@
 {
   "name": "robcsaszar-prose",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Draft and review skill for prose that detects AI writing patterns and rewrites in an authentic, channel-appropriate voice.",
   "author": {
     "name": "Rob Csaszar",

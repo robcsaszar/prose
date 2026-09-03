@@ -80,6 +80,6 @@ All notable changes to this project are documented here. Format follows [Keep a 
 - Initial release: prose skill.
 
 [0.9.0]: https://github.com/robcsaszar/prose/releases/tag/v0.9.0
-[0.8.0]: https://github.com/robcsaszar/prose/compare/v0.7.0...v0.8.0
+[0.8.0]: https://github.com/robcsaszar/prose/compare/v0.7.0...v0.9.0
 [0.7.0]: https://github.com/robcsaszar/prose/releases/tag/v0.7.0
 [0.5.0]: https://github.com/robcsaszar/prose/releases/tag/v0.5.0
